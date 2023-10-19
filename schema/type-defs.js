@@ -19,6 +19,8 @@ const typeDefs = gql`
     title: String!
     original_title: String!
     original_title_romanised: String!
+    image: String!
+    movie_banner: String!
     description: String!
     director: String!
     producer: String!
