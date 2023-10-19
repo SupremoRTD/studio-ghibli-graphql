@@ -39,7 +39,7 @@ const typeDefs = gql`
     eye_color: String!
     hair_color: String!
     films: [Film]
-    species: [Specimen]
+    species: Specimen
     url: String!
   }
 

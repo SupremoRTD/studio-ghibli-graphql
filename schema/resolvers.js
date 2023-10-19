@@ -21,7 +21,7 @@ const fetcher = {
     try {
       const response = await fetch(`${url}`)
       const data = await response.json()
-      return data
+      return (!data.id) ? null : data // fix for some fields that point to a collection url
     } catch (err) { throw new Error(`Error: ${err}`) }
   },
 
@@ -78,7 +78,8 @@ const resolvers = {
   },
 
   Person: {
-    films: async (parent) => await fetcher.relationships('people', parent.id, 'films')
+    films: async (parent) => await fetcher.relationships('people', parent.id, 'films'),
+    species: async (parent) => await fetcher.direct(parent.species),
   },
 
   Film: {
