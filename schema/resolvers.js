@@ -17,6 +17,14 @@ const fetcher = {
     } catch (err) { throw new Error(`Error: ${err}`) }
   },
 
+  direct: async (url) => {
+    try {
+      const response = await fetch(`${url}`)
+      const data = await response.json()
+      return data
+    } catch (err) { throw new Error(`Error: ${err}`) }
+  },
+
   relationships: async (endpoint, id, key) => {
     try {
       // get a single unit from the api
@@ -64,7 +72,9 @@ const resolvers = {
     species: async () => await fetcher.all('species'),
     specimen: async (_, args) => await fetcher.one('species', args.id),
     locations: async () => await fetcher.all('locations'),
-    location: async (_, args) => await fetcher.one('locations', args.id)
+    location: async (_, args) => await fetcher.one('locations', args.id),
+    vehicles: async () => await fetcher.all('vehicles'),
+    vehicle: async (_, args) => await fetcher.one('vehicles', args.id)
   },
 
   Person: {
@@ -85,6 +95,11 @@ const resolvers = {
   Location: {
     residents: async (parent) => await fetcher.relationships('locations', parent.id, 'residents'),
     films: async (parent) => await fetcher.relationships('locations', parent.id, 'films')
+  },
+
+  Vehicle: {
+    pilot: async (parent) => await fetcher.direct(parent.pilot),
+    films: async (parent) => await fetcher.relationships('vehicles', parent.id, 'films')
   }
 }
 

@@ -10,6 +10,8 @@ const typeDefs = gql`
     specimen(id: String!): Specimen
     locations: [Location]
     location(id: String!): Location
+    vehicles: [Vehicle]
+    vehicle(id: String!): Vehicle
   }
 
   type Film {
@@ -59,6 +61,17 @@ const typeDefs = gql`
     terrain: String!
     surface_water: String!
     residents: [Person]
+    films: [Film]
+    url: String!
+  }
+
+  type Vehicle {
+    id: String!
+    name: String!
+    description: String!
+    vehicle_class: String!
+    length: String!
+    pilot: Person
     films: [Film]
     url: String!
   }
