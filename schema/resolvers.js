@@ -1,27 +1,27 @@
-const baseUrl = 'https://ghibliapi.vercel.app'
+const baseUrl = 'https://ghibli-api.vercel.app/api'
 
 const fetcher = {
   all: async (endpoint) => {
     try {
       const response = await fetch(`${baseUrl}/${endpoint}`)
-      const data = await response.json()
-      return data
+      const root = await response.json()
+      return root.data
     } catch (err) { throw new Error(`Error: ${err}`) }
   },
 
   one: async (endpoint, id) => {
     try {
       const response = await fetch(`${baseUrl}/${endpoint}/${id}`)
-      const data = await response.json()
-      return data
+      const root = await response.json()
+      return root.data
     } catch (err) { throw new Error(`Error: ${err}`) }
   },
 
   direct: async (url) => {
     try {
       const response = await fetch(`${url}`)
-      const data = await response.json()
-      return (!data.id) ? null : data // fix for some fields that point to a collection url
+      const root = await response.json()
+      return (!root.data.id) ? null : root.data // fix for some fields that point to a collection url
     } catch (err) { throw new Error(`Error: ${err}`) }
   },
 
@@ -29,11 +29,11 @@ const fetcher = {
     try {
       // get a single unit from the api
       const unit_response = await fetch(`${baseUrl}/${endpoint}/${id}`)
-      const unit_data = await unit_response.json()
+      const unit_root = await unit_response.json()
 
       // api returns relationship urls array, combine into promise array
       const requests =
-        unit_data[key]
+        unit_root.data[key]
           .filter(key => !key.includes('TODO')) // api author added this to some arrays
           .map(key => fetch(key))
       const responses = await Promise.all(requests)
@@ -47,8 +47,8 @@ const fetcher = {
 
       // handle all returned promise data
       const json = responses.map(response => response.json())
-      const data = await Promise.all(json)
-      return data
+      const root = await Promise.all(json)
+      return root.data
     } catch (err) { throw new Error(`Error: ${err}`) }
   },
 
@@ -56,9 +56,9 @@ const fetcher = {
     try {
       // request all data from an endpoint, then filter data by a value within a key
       const request = await fetcher.all(endpoint)
-      const data = request.filter(data => data[key].some(url => url.includes(value)))
+      const root = request.filter(data => data[key].some(url => url.includes(value)))
 
-      return data
+      return root.data
     } catch (err) { throw new Error(`Error: ${err}`) }
   }
 }
