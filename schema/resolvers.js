@@ -58,7 +58,7 @@ const fetcher = {
       const request = await fetcher.all(endpoint)
       const root = request.filter(data => data[key].some(url => url.includes(value)))
 
-      return root.data
+      return root
     } catch (err) { throw new Error(`Error: ${err}`) }
   }
 }
