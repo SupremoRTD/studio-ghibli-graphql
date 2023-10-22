@@ -4,7 +4,7 @@
 
 ## Base URL
 
-TBD
+https://studio-ghibli-graphql.vercel.app
 
 ## Index
 
