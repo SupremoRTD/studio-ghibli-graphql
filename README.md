@@ -9,7 +9,7 @@ https://studio-ghibli-graphql.vercel.app
 ## Index
 
 | Query Field                      | Description        |
-| ---------------------------------| ------------------ |
+| -------------------------------- | ------------------ |
 | [films](#query-films)            | Get all Films      |
 | [films(id)](#query-film)         | Get Film by ID     |
 | [people](#query-people)          | Get all People     |
@@ -22,13 +22,12 @@ https://studio-ghibli-graphql.vercel.app
 | [vehicles(id)](#query-vehicle)   | Get Vehicle by ID  |
 
 | Type Field                 | Description        |
-| ---------------------------| ------------------ |
+| -------------------------- | ------------------ |
 | [Film](#type-film)         | Defines a Film     |
 | [Person](#type-person)     | Defines a Person   |
 | [Location](#type-location) | Defines a Location |
 | [Specimen](#type-specimen) | Defines a Specimen |
 | [Vehicle](#type-vehicle)   | Defines a Vehicle  |
-
 
 ## GraphQL Schema Documentation
 
@@ -37,11 +36,13 @@ This GraphQL schema defines queries for information related to [`ghibli-api`](ht
 ## Queries
 
 ### Query Films
+
 - Returns a list of films.
 - Input: None
 - Output: List of [**Film**](#type-film) objects.
 
 **Example Query:**
+
 ```graphql
 query {
   films {
@@ -67,20 +68,23 @@ query {
         "id": "2",
         "title": "Spirited Away",
         "description": "A young girl's adventure in a mysterious and magical world."
-      },
+      }
       // ... Other film objects
     ]
   }
 }
 ```
+
 [Index ⤴️](#index)
 
 ### Query Film
+
 - Returns information about a specific film by its ID.
 - Input: Film ID (String)
 - Output: [**Film**](#type-film) object.
 
 **Example Query:**
+
 ```graphql
 query {
   film(id: "1") {
@@ -106,14 +110,17 @@ query {
   }
 }
 ```
+
 [Index ⤴️](#index)
 
 ### Query People
+
 - Returns a list of people.
 - Input: None
 - Output: List of [**Person**](#type-person) objects.
 
 **Example Query:**
+
 ```graphql
 query {
   people {
@@ -142,20 +149,23 @@ query {
         "name": "Mei Kusakabe",
         "gender": "Female",
         "age": "4"
-      },
+      }
       // ... Other person objects
     ]
   }
 }
 ```
+
 [Index ⤴️](#index)
 
 ### Query Person
+
 - Returns information about a specific person by their ID.
 - Input: Person ID (String)
 - Output: [**Person**](#type-person) object.
 
 **Example Query:**
+
 ```graphql
 query {
   person(id: "1") {
@@ -181,14 +191,17 @@ query {
   }
 }
 ```
+
 [Index ⤴️](#index)
 
 ### Query Species
+
 - Returns a list of species.
 - Input: None
 - Output: List of [**Specimen**](#type-specimen) objects.
 
 **Example Query:**
+
 ```graphql
 query {
   species {
@@ -214,20 +227,23 @@ query {
         "id": "2",
         "name": "Susuwatari",
         "classification": "Soot Sprite"
-      },
+      }
       // ... Other species objects
     ]
   }
 }
 ```
+
 [Index ⤴️](#index)
 
 ### Query Specimen
+
 - Returns information about a specific specimen by its ID.
 - Input: Specimen ID (String)
 - Output: [**Specimen**](#type-specimen) object.
 
 **Example Query:**
+
 ```graphql
 query {
   specimen(id: "1") {
@@ -251,14 +267,17 @@ query {
   }
 }
 ```
+
 [Index ⤴️](#index)
 
 ### Query Locations
+
 - Returns a list of locations.
 - Input: None
 - Output: List of [**Location**](#type-location) objects.
 
 **Example Query:**
+
 ```graphql
 query {
   locations {
@@ -284,20 +303,23 @@ query {
         "id": "2",
         "name": "Spirit Realm",
         "climate": "Mysterious"
-      },
+      }
       // ... Other location objects
     ]
   }
 }
 ```
+
 [Index ⤴️](#index)
 
 ### Query Location
+
 - Returns information about a specific location by its ID.
 - Input: Location ID (String)
 - Output: [**Location**](#type-location) object.
 
 **Example Query:**
+
 ```graphql
 query {
   location(id: "1") {
@@ -321,14 +343,17 @@ query {
   }
 }
 ```
+
 [Index ⤴️](#index)
 
 ### Query Vehicles
+
 - Returns a list of vehicles.
 - Input: None
 - Output: List of [**Vehicle**](#type-vehicle) objects.
 
 **Example Query:**
+
 ```graphql
 query {
   vehicles {
@@ -354,20 +379,23 @@ query {
         "id": "2",
         "name": "Porco Rosso's Plane",
         "vehicle_class": "Seaplane"
-      },
+      }
       // ... Other vehicle objects
     ]
   }
 }
 ```
+
 [Index ⤴️](#index)
 
 ### Query Vehicle
+
 - Returns information about a specific vehicle by its ID.
 - Input: Vehicle ID (String)
 - Output: [**Vehicle**](#type-vehicle) object.
 
 **Example Query:**
+
 ```graphql
 query {
   vehicle(id: "1") {
@@ -391,11 +419,13 @@ query {
   }
 }
 ```
+
 [Index ⤴️](#index)
 
 ## Types
 
 ### Type Film
+
 - Represents a [**Film**](#type-film).
 - Fields:
   - `id`: Unique identifier (String)
@@ -418,6 +448,7 @@ query {
 [Index ⤴️](#index)
 
 ### Type Person
+
 - Represents people or a [**Person**](#type-person).
 - Fields:
   - `id`: Unique identifier (String)
@@ -433,6 +464,7 @@ query {
 [Index ⤴️](#index)
 
 ### Type Specimen
+
 - Represents a species or [**Specimen**](#type-specimen).
 - Fields:
   - `id`: Unique identifier (String)
@@ -447,6 +479,7 @@ query {
 [Index ⤴️](#index)
 
 ### Type Location
+
 - Represents a [**Location**](#type-location).
 - Fields:
   - `id`: Unique identifier (String)
@@ -461,6 +494,7 @@ query {
 [Index ⤴️](#index)
 
 ### Type Vehicle
+
 - Represents a [**Vehicle**](#type-vehicle).
 - Fields:
   - `id`: Unique identifier (String)
@@ -476,4 +510,4 @@ query {
 
 ---
 
-© 2023, By @SupremoRTD
+© 2023, By @aatxxe
